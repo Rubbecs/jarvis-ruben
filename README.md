@@ -37,11 +37,3 @@ npm run dev
 ```
 
 The frontend proxies API requests to `http://localhost:4000/api`.
-
-## Next steps
-
-- Add workflow builder UI and multi-agent orchestration
-- Add local vector search and Obsidian-style memory vault
-- Add agent cloning, import/export, and workflow templates
-- Add task scheduling, retry, pause/resume, and notifications
-- Add voice assistant integration and browser automation
