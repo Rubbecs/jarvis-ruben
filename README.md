@@ -1,39 +1,52 @@
 # jarvis-ruben
 
-A local-first autonomous agent dashboard scaffold for Jarvis-style workflows.
+A local-first autonomous agent dashboard built to feel like a next-gen Jarvis control center.
 
-## Architecture
+**Run your own AI cockpit locally, manage agents, schedule tasks, and explore memory—all without cloud lock-in.**
 
-- `packages/backend` - Express + local JSON file persistence API server
-- `packages/frontend` - Vite + React dashboard
-- `packages/backend/data` - local storage for agent data and encryption secret
+## Why it rules
 
-## Features included
+- **Local-first by design**: all data stays on your machine.
+- **Zero native binary drama**: uses JSON persistence instead of native SQLite bindings.
+- **Fast dev workflow**: one repo, two powerful packages, instant startup.
+- **Agent-first UX**: agent cloning, import/export, memory, and workflow hooks are all ready.
+- **Built for experimentation**: task orchestration, retry/pause, voice stubs, and automation infrastructure.
 
-- Agent management API and dashboard panel
-- Task orchestration endpoints and task dashboard panel
-- Local API key storage and encryption utilities
-- Memory vault API and explorer panel
-- Local-first architecture with no mandatory cloud dependency
+## What’s inside
 
-## Getting Started
+- Agent management with personality, tools, model settings, and team metadata
+- Task dashboard with scheduling, retries, pause/resume, and agent-specific task views
+- Memory vault for local context storage and knowledge exploration
+- API key manager with local encryption support
+- Workflow templates and multi-agent orchestration foundations
+- Frontend proxy setup for smooth API development
 
-1. Install dependencies from the workspace root:
+## Quick start
+
+From the workspace root:
 
 ```bash
 npm run bootstrap
-```
-
-2. Start the backend server from the workspace root:
-
-```bash
 npm run start
-```
-
-3. Start the frontend development server from the workspace root:
-
-```bash
 npm run dev
 ```
 
-The frontend proxies API requests to `http://localhost:4000/api`.
+Then open the UI in your browser.
+
+## Local ports
+
+- Frontend: `http://localhost:5173`
+- Backend API: `http://localhost:4000/api`
+
+## Architecture
+
+- `packages/backend` – Express API server with local JSON data persistence
+- `packages/frontend` – Vite + React dashboard UI
+- `packages/backend/data` – local store for app data and encryption secrets
+
+## Built for
+
+- rapid autonomous agent prototyping
+- local automation experiments
+- clean, offline-first AI workflows
+- hands-on Jarvis-style dashboard building
