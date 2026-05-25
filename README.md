@@ -20,7 +20,26 @@ A local-first autonomous agent dashboard built to feel like a next-gen Jarvis co
 - API key manager with local encryption support
 - Workflow templates and multi-agent orchestration foundations
 - Frontend proxy setup for smooth API development
+## Tool integrations
 
+This project includes a tool registry for agent integrations, so you can wire agents into external apps and services.
+
+Available starter tools include:
+
+- `discord` — Discord Chat
+- `gmail` — Gmail Assistant
+- `slack` — Slack Hub
+- `calendar` — Calendar Scheduler
+- `github` — GitHub Companion
+- `drive` — Drive & Files
+- `browser` — Browser Automator
+- `screen-share` — Screen Assistant
+- `file-editor` — File Editor
+- `terminal` — Terminal Shell
+- `notifications` — Notifications
+- `notes` — Notes & Memory
+
+Agents can be configured with any comma-separated tool list, and the backend exposes the tool registry at `GET /api/tools`.
 ## Quick start
 
 From the workspace root:

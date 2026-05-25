@@ -84,3 +84,10 @@ export interface VectorEntry {
   createdAt: string;
   updatedAt: string;
 }
+
+export interface ToolDefinition {
+  id: string;
+  name: string;
+  description: string;
+  category: string;
+}

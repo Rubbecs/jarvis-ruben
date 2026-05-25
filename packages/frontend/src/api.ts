@@ -10,6 +10,11 @@ export const fetchAgents = async () => {
   return response.data;
 };
 
+export const fetchTools = async () => {
+  const response = await apiClient.get('/tools');
+  return response.data;
+};
+
 export const createAgent = async (payload: any) => {
   const response = await apiClient.post('/agents', payload);
   return response.data;

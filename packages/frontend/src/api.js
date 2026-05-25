@@ -7,6 +7,10 @@ export const fetchAgents = async () => {
     const response = await apiClient.get('/agents');
     return response.data;
 };
+export const fetchTools = async () => {
+    const response = await apiClient.get('/tools');
+    return response.data;
+};
 export const createAgent = async (payload) => {
     const response = await apiClient.post('/agents', payload);
     return response.data;
@@ -106,8 +110,10 @@ export const fetchVoiceLogs = async () => {
 export const fetchKeys = async () => {
     const response = await apiClient.get('/keys');
     return response.data;
-};
-export const createApiKey = async (payload) => {
+};export const fetchTools = async () => {
+    const response = await apiClient.get('/tools');
+    return response.data;
+};export const createApiKey = async (payload) => {
     const response = await apiClient.post('/keys', payload);
     return response.data;
 };

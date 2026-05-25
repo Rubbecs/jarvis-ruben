@@ -1,7 +1,7 @@
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { Agent, ApiKey, MemoryNode, Task, WorkflowTemplate, Notification, AutomationJob, VectorEntry } from './types.js';
+import { Agent, ApiKey, MemoryNode, Task, WorkflowTemplate, Notification, AutomationJob, VectorEntry, ToolDefinition } from './types.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const dataDir = join(__dirname, '../data');
@@ -202,3 +202,20 @@ export const searchVectorEntries = (query: string): VectorEntry[] => {
     return normalized.length === 0 || text.includes(normalized);
   });
 };
+
+const defaultTools: ToolDefinition[] = [
+  { id: 'discord', name: 'Discord Chat', description: 'Chat with your bot through Discord channels.', category: 'communication' },
+  { id: 'gmail', name: 'Gmail Assistant', description: 'Send, read, and summarize Gmail messages.', category: 'email' },
+  { id: 'slack', name: 'Slack Hub', description: 'Bridge Slack conversations into agent workflows.', category: 'communication' },
+  { id: 'calendar', name: 'Calendar Scheduler', description: 'Manage events, meetings, and reminders.', category: 'productivity' },
+  { id: 'github', name: 'GitHub Companion', description: 'Review repos, issues, and pull requests.', category: 'development' },
+  { id: 'drive', name: 'Drive & Files', description: 'Access documents, uploads, and shared files.', category: 'storage' },
+  { id: 'browser', name: 'Browser Automator', description: 'Automate web actions and browse pages.', category: 'automation' },
+  { id: 'screen-share', name: 'Screen Assistant', description: 'Share screen context for smarter interactions.', category: 'collaboration' },
+  { id: 'file-editor', name: 'File Editor', description: 'Inspect and edit files from the agent workspace.', category: 'development' },
+  { id: 'terminal', name: 'Terminal Shell', description: 'Execute safe local shell commands and scripts.', category: 'automation' },
+  { id: 'notifications', name: 'Notifications', description: 'Push real-time alerts across channels.', category: 'utility' },
+  { id: 'notes', name: 'Notes & Memory', description: 'Store and retrieve context-rich notes.', category: 'productivity' }
+];
+
+export const getAvailableTools = (): ToolDefinition[] => defaultTools;

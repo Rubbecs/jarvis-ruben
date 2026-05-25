@@ -33,7 +33,8 @@ import {
   getAutomationJobs,
   createAutomationJob,
   searchVectorEntries,
-  createVectorEntry
+  createVectorEntry,
+  getAvailableTools
 } from './db.js';
 import { encryptApiKey } from './utils/crypto.js';
 import { Agent, ApiKey, MemoryNode, Task, WorkflowTemplate, Notification } from './types.js';
@@ -101,6 +102,10 @@ api.post('/agents/:id/clone', (req, res) => {
 
 api.get('/agents/export', (_req, res) => {
   res.json(getAllAgents());
+});
+
+api.get('/tools', (_req, res) => {
+  res.json(getAvailableTools());
 });
 
 api.post('/agents/import', (req, res) => {
