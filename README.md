@@ -52,6 +52,8 @@ npm run dev
 
 Then open the UI in your browser.
 
+Windows users: see [README-WINDOWS.md](README-WINDOWS.md) for a one-command local start flow.
+
 ## Local ports
 
 - Frontend: `http://localhost:5173`

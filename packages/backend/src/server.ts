@@ -42,7 +42,9 @@ import { Agent, ApiKey, MemoryNode, Task, WorkflowTemplate, Notification } from 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const app = express();
 const port = Number(process.env.PORT || 4000);
-const staticPath = join(__dirname, '../frontend/dist');
+// Frontend build output lives in packages/frontend/dist relative to this file's folder.
+// From packages/backend/src -> ../../frontend/dist, and from compiled dist -> ../../frontend/dist as well.
+const staticPath = join(__dirname, '../../frontend/dist');
 
 app.use(cors());
 app.use(json());
