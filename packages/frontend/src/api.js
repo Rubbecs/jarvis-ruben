@@ -115,3 +115,15 @@ export const createApiKey = async (payload) => {
     const response = await apiClient.post('/keys', payload);
     return response.data;
 };
+export const updateApiKey = async (id, payload) => {
+    const response = await apiClient.put(`/keys/${id}`, payload);
+    return response.data;
+};
+export const deleteAgent = async (id) => {
+    const response = await apiClient.delete(`/agents/${id}`);
+    return response.data;
+};
+export const markNotificationRead = async (id) => {
+    const response = await apiClient.post(`/notifications/${id}/read`);
+    return response.data;
+};

@@ -1,4 +1,7 @@
 import axios from 'axios';
+import type { Agent, Task, ApiKey, MemoryNode, Notification, AutomationJob, Tool, ChatMessage, WorkflowTemplate } from './types';
+
+export type { Agent, Task, ApiKey, MemoryNode, Notification, AutomationJob, Tool, ChatMessage, WorkflowTemplate };
 
 export const apiClient = axios.create({
   baseURL: '/api',
@@ -142,5 +145,20 @@ export const fetchKeys = async () => {
 
 export const createApiKey = async (payload: any) => {
   const response = await apiClient.post('/keys', payload);
+  return response.data;
+};
+
+export const updateApiKey = async (id: string, payload: any) => {
+  const response = await apiClient.put(`/keys/${id}`, payload);
+  return response.data;
+};
+
+export const deleteAgent = async (id: string) => {
+  const response = await apiClient.delete(`/agents/${id}`);
+  return response.data;
+};
+
+export const markNotificationRead = async (id: string) => {
+  const response = await apiClient.post(`/notifications/${id}/read`);
   return response.data;
 };
