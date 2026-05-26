@@ -1,73 +1,309 @@
 # jarvis-ruben
 
-A local-first autonomous agent dashboard built to feel like a next-gen Jarvis control center.
+**Local-first multi-agent orchestration dashboard** — Like OpenSwarm or OpenClaw, but for your localhost.
 
-**Run your own AI cockpit locally, manage agents, schedule tasks, and explore memory—all without cloud lock-in.**
+## 🎯 What is it?
 
-## Why it rules
+Jarvis Ruben is a **fully functional AI agent dashboard** where you can:
 
-- **Local-first by design**: all data stays on your machine.
-- **Zero native binary drama**: uses JSON persistence instead of native SQLite bindings.
-- **Fast dev workflow**: one repo, two powerful packages, instant startup.
-- **Agent-first UX**: agent cloning, import/export, memory, and workflow hooks are all ready.
-- **Built for experimentation**: task orchestration, retry/pause, voice stubs, and automation infrastructure.
+- ✅ **Create & manage AI agents** with custom prompts, personalities, and tools
+- ✅ **Chat with agents** in real-time via a floating chat panel  
+- ✅ **Execute commands** and track automation jobs with live status
+- ✅ **Connect integrations** — Discord, Gmail, GitHub, Slack, Calendar, and more
+- ✅ **Store knowledge** in a memory vault with semantic search
+- ✅ **Manage API keys** securely (encrypted locally with AES-256)
+- ✅ **Schedule tasks** and assign them to agents
+- ✅ **Export/import agents** for backup and sharing
 
-## What’s inside
+**Everything runs locally. No cloud. No subscriptions. Just you and your agents.**
 
-- Agent management with personality, tools, model settings, and team metadata
-- Task dashboard with scheduling, retries, pause/resume, and agent-specific task views
-- Memory vault for local context storage and knowledge exploration
-- API key manager with local encryption support
-- Workflow templates and multi-agent orchestration foundations
-- Frontend proxy setup for smooth API development
-## Tool integrations
+## 🚀 Quick Start
 
-This project includes a tool registry for agent integrations, so you can wire agents into external apps and services.
-
-Available starter tools include:
-
-- `discord` — Discord Chat
-- `gmail` — Gmail Assistant
-- `slack` — Slack Hub
-- `calendar` — Calendar Scheduler
-- `github` — GitHub Companion
-- `drive` — Drive & Files
-- `browser` — Browser Automator
-- `screen-share` — Screen Assistant
-- `file-editor` — File Editor
-- `terminal` — Terminal Shell
-- `notifications` — Notifications
-- `notes` — Notes & Memory
-
-Agents can be configured with any comma-separated tool list, and the backend exposes the tool registry at `GET /api/tools`.
-## Quick start
-
-From the workspace root:
-
-```bash
+### Windows
+```powershell
+git clone https://github.com/Rubbecs/jarvis-ruben.git
+cd jarvis-ruben
 npm run bootstrap
-npm run start
-npm run dev
+npm run start:prod
 ```
 
-Then open the UI in your browser.
+Then open **http://localhost:4000** in your browser.
 
-Windows users: see [README-WINDOWS.md](README-WINDOWS.md) for a one-command local start flow.
+### macOS/Linux
+```bash
+git clone https://github.com/Rubbecs/jarvis-ruben.git
+cd jarvis-ruben
+npm run bootstrap
+npm run start:prod
+```
 
-## Local ports
+### Double-click to run (Windows)
+Just extract the repo and double-click `start-local.bat`
 
-- Frontend: `http://localhost:5173`
-- Backend API: `http://localhost:4000/api`
+---
 
-## Architecture
+## 🎮 Features at a Glance
 
-- `packages/backend` – Express API server with local JSON data persistence
-- `packages/frontend` – Vite + React dashboard UI
-- `packages/backend/data` – local store for app data and encryption secrets
+### 🤖 Agents Dashboard
+Create AI agents with:
+- Custom system prompts & personality
+- Model selection (GPT-4o, Claude, Mistral, Llama, local)
+- Tool assignments (Discord, Gmail, GitHub, etc.)
+- Memory system for context retention
+- Team & permission management
+- Clone, export, import agents
 
-## Built for
+### 💬 Chat Panel
+- Real-time chat with your agents
+- Floating widget (bottom right)
+- Select any agent to talk to
+- See responses in real-time
+- Perfect for testing
 
-- rapid autonomous agent prototyping
-- local automation experiments
-- clean, offline-first AI workflows
-- hands-on Jarvis-style dashboard building
+### ⚙️ Automation & Commands
+- Execute commands on agents
+- Track job status (queued → running → completed)
+- View execution output
+- Auto-refresh job history
+- Cancel or retry failed jobs
+
+### ⚡ Settings & Plugins
+Three-tab dashboard:
+
+**Tools Catalog** — View all 12 available tools
+- Communication: Discord, Slack
+- Email: Gmail  
+- Productivity: Calendar, Notes
+- Development: GitHub, File Editor, Terminal
+- Automation: Browser, Screen Share
+- Storage: Drive & Files
+
+**API Integration** — Add your keys
+- Paste provider keys (Discord, Gmail, GitHub, OpenAI, etc.)
+- Assign to agents that need them
+- Keys encrypted locally
+
+**Agent Tool Setup** — Assign tools to agents
+- Check which tools each agent can use
+- Changes apply immediately
+- One agent = multiple tools possible
+
+### 🧠 Memory Vault
+- Create memory nodes with tags
+- Store API docs, context, knowledge
+- Link nodes to create knowledge graphs
+- Global or agent-specific scope
+
+### ✓ Tasks Dashboard
+- Create tasks with priority & description
+- Assign to agents
+- Pause/resume/retry tasks
+- View task history & status
+
+### 🔑 API Keys Manager
+- Store provider credentials securely
+- Local AES-256-GCM encryption
+- No cloud sync
+- Assign keys to specific agents
+
+---
+
+## 🎓 Example: Discord Bot Setup
+
+1. **Create an agent**
+   - Go to 🤖 Agents
+   - Name: "DiscordBot"
+   - Prompt: "You help manage our Discord"
+   - Tools: [Discord]
+
+2. **Add your Discord token**
+   - Go to ⚡ Settings → Integrations
+   - Provider: Discord
+   - Paste your bot token
+   - Assign to DiscordBot
+
+3. **Chat with it**
+   - Click 💬 Chat button
+   - Select DiscordBot
+   - Type: "Send a message to #general saying hello"
+   - Watch it execute!
+
+---
+
+## 📚 Full Documentation
+
+For complete feature walkthrough, see **[FEATURES.md](FEATURES.md)** which includes:
+- Detailed workflow examples
+- API endpoint reference
+- Integration guides
+- Troubleshooting
+- Best practices
+- Advanced usage
+
+Windows users should also see **[README-WINDOWS.md](README-WINDOWS.md)** for Windows-specific setup.
+
+---
+
+## 🏗️ Architecture
+
+**Single-machine, zero-setup stack:**
+
+- **Frontend**: React 18 + TypeScript + Vite + Tailwind CSS
+- **Backend**: Express.js + Node.js + TypeScript
+- **Data**: Local JSON persistence (no database)
+- **Security**: AES-256-GCM for sensitive data
+- **Port**: `http://localhost:4000` (configurable)
+
+**Data storage:**
+```
+packages/backend/data/
+├── store.json       (all agent, task, memory data)
+└── secret.key       (encryption key for API credentials)
+```
+
+---
+
+## 🛠️ Development
+
+### Development mode (with hot reload)
+```bash
+npm run bootstrap          # Install all deps
+npm run dev               # Frontend dev server on :5173 (proxies to :4000)
+npm run start --prefix packages/backend  # Backend dev with nodemon
+```
+
+### Production build & run
+```bash
+npm run build:all         # Build frontend + backend
+npm run start:prod        # Serve on localhost:4000
+```
+
+### Change port
+```powershell
+$env:PORT=5001
+npm run start:prod
+```
+
+---
+
+## 💻 Commands Reference
+
+### Root scripts
+```bash
+npm run bootstrap        # Install all dependencies
+npm run dev             # Start frontend dev server
+npm run build           # Build frontend only
+npm run build:all       # Build frontend + backend
+npm run start:prod      # Build everything & start server
+npm run lint            # Lint frontend
+```
+
+### Frontend (from packages/frontend/)
+```bash
+npm run dev             # Start Vite dev server
+npm run build           # Build for production
+npm run preview         # Preview production build
+```
+
+### Backend (from packages/backend/)
+```bash
+npm run dev             # Start with nodemon (watch mode)
+npm run start           # Run compiled server
+npm run build           # Compile TypeScript
+```
+
+---
+
+## 🔐 Security
+
+✅ **Local-first** — All data stays on your machine  
+✅ **Encrypted** — API keys encrypted with AES-256-GCM  
+✅ **No cloud** — No internet calls required  
+✅ **Open source** — Audit the code yourself  
+✅ **Portable** — Run on any machine with Node.js  
+
+**Recommendation:** Run behind a VPN if accessing remotely.
+
+---
+
+## 🎨 UI Features
+
+- **Dark theme** optimized for focus
+- **Responsive design** with Tailwind CSS
+- **Floating chat panel** for easy access
+- **Notification center** with auto-refresh
+- **Real-time status** updates
+- **Emoji icons** for quick navigation
+- **Keyboard shortcuts** (Enter to send)
+
+---
+
+## 🚨 Troubleshooting
+
+**Port already in use?**
+```powershell
+$env:PORT=5000
+npm run start:prod
+```
+
+**Backend won't start?**
+- Ensure Node.js 18+ is installed
+- Try: `npm run bootstrap` then `npm run build:all`
+- Check port 4000 is available
+
+**Chat doesn't respond?**
+- Verify agent has tools assigned
+- Check Automation tab for errors
+- Ensure API keys are valid
+
+**Can't find agents?**
+- Reload the page
+- Check browser console for errors
+- Verify backend is running at http://localhost:4000
+
+See [FEATURES.md](FEATURES.md) for more troubleshooting.
+
+---
+
+## 🗺️ Roadmap
+
+- [x] Agent management ✓
+- [x] Task orchestration ✓
+- [x] Chat interface ✓
+- [x] API key management ✓
+- [x] Automation executor ✓
+- [x] Memory vault ✓
+- [x] Settings dashboard ✓
+- [ ] Visual workflow builder
+- [ ] Multi-agent swarms
+- [ ] Voice interaction
+- [ ] Agent marketplace
+- [ ] Team collaboration
+- [ ] Cloud sync (optional)
+
+---
+
+## 📖 Learn More
+
+- **[FEATURES.md](FEATURES.md)** — Complete feature guide with examples
+- **[README-WINDOWS.md](README-WINDOWS.md)** — Windows-specific setup
+- **Backend API** — See `packages/backend/src/server.ts` for endpoints
+- **Frontend UI** — See `packages/frontend/src/pages/` for components
+
+---
+
+## 🤝 Contributing
+
+Found a bug? Have ideas? Open an issue or submit a PR.
+
+---
+
+## 📄 License
+
+MIT
+
+---
+
+**Jarvis Ruben** — Your personal AI cockpit. Everything local. Everything yours.
+
+Made with ❤️ for AI enthusiasts who want full control.
