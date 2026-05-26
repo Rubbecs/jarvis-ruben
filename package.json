@@ -6,12 +6,12 @@
     "packages/*"
   ],
   "scripts": {
-    "bootstrap": "npm install",
-    "dev": "npm run dev --workspace frontend",
-    "start": "npm run start --workspace backend",
-    "build": "npm run build --workspace frontend",
-    "build:all": "npm run build --workspace frontend && npm run build --workspace backend",
-    "start:prod": "npm run build:all && npm run start --workspace backend",
-    "lint": "npm run lint --workspace frontend"
+    "bootstrap": "npm install && npm install --prefix packages/backend && npm install --prefix packages/frontend",
+    "dev": "npm run dev --prefix packages/frontend",
+    "start": "npm run start --prefix packages/backend",
+    "build": "npm run build --prefix packages/frontend",
+    "build:all": "npm run build --prefix packages/frontend && npm run build --prefix packages/backend",
+    "start:prod": "npm run build:all && npm run start --prefix packages/backend",
+    "lint": "npm run lint --prefix packages/frontend"
   }
 }
